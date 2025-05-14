@@ -9,8 +9,6 @@ on:
       - main  # Trigger on pull request to the main branch
 
 env:
-  AWS_ACCOUNT_ID: 975391844503
-  AWS_REGION: us-east-1
   ECR_REGISTRY: ${{env.AWS_ACCOUNT_ID}}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
   ECR_REPOSITORY: demo-app
   IMAGE_TAG: ${{ github.sha }}
