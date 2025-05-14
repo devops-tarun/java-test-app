@@ -5,7 +5,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy compiled Java application (assumed to be compiled)
-COPY target/hello-world.jar /app/hello-world.jar
+COPY target/hello-world-1.0-SNAPSHOT.jar /app/hello-world.jar
 
 # Expose port for application
 EXPOSE 8080
