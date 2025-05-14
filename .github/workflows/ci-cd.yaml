@@ -10,9 +10,9 @@ on:
 
 # added ECR variables in github
 env:
-  AWS_REGION: ${{ secrets.AWS_REGION }}
-  ECR_REGISTRY: 975391844503.dkr.ecr.us-east.1.amazonaws.com
-  ECR_REPOSITORY: demo-app
+#  AWS_REGION: ${{ secrets.AWS_REGION }}
+#  ECR_REGISTRY: 975391844503.dkr.ecr.us-east.1.amazonaws.com
+#  ECR_REPOSITORY: demo-app
   IMAGE_TAG: ${{ github.sha }}
 
 jobs:
