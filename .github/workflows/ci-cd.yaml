@@ -9,6 +9,7 @@ on:
       - main  # Trigger on pull request to the main branch
 
 env:
+  AWS_REGION: us-east-1
   ECR_REGISTRY: 975391844503.dkr.ecr.us-east.1.amazonaws.com
   ECR_REPOSITORY: demo-app
   IMAGE_TAG: ${{ github.sha }}
