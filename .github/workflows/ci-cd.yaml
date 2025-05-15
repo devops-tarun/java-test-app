@@ -92,7 +92,7 @@ jobs:
           echo "Chekcing if deployment $dep already exists.."
           if kubectl get deployment $dep -n $NAMESPACE > /dev/null 2>&1 ; then
             echo "Deployment $dep already exists, rolling updates..."
-            kubectl set image deployment/$dep java-app=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} --record -n $NAMESPACE
+            kubectl set image deployment/$dep java-app-container=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} --record -n $NAMESPACE
             kubectl rollout status deployment/$dep -n $NAMESPACE
 
           else
