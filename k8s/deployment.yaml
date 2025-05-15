@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world-deployment
+  name: java-app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: hello-world
+      app: java-app
   template:
     metadata:
       labels:
-        app: hello-world
+        app: java-app
     spec:
       containers:
-      - name: hello-world-container
-        image: <YOUR_ECR_REPO_URI>/hello-world:latest
+      - name: java-app-container
+        image: ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}
         ports:
         - containerPort: 8080
 
