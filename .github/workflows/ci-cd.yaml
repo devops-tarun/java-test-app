@@ -81,7 +81,7 @@ jobs:
           NAMESPACE=java-app
           dep=java-app
           echo "Checking if $NAMESPACE namespace exists"
-          if ! kubectl get namespace $NAMESPACE > /dev/null 2>&1
+          if ! kubectl get namespace $NAMESPACE > /dev/null 2>&1; then
             echo "Namespace $NAMESPACE doesn't exist, creating it..."
             kubectl create namespace $NAMESPACE
           else
@@ -90,7 +90,7 @@ jobs:
 
           # Working on deployement
           echo "Chekcing if deployment $dep already exists.."
-          if kubectl get deployment $dep -n $NAMESPACE > /dev/null 2>&1
+          if kubectl get deployment $dep -n $NAMESPACE > /dev/null 2>&1 ; then
             echo "Deployment $dep already exists, rolling updates..."
             kubectl set image deployment/$dep java-app=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} --record -n $NAMESPACE
             kubectl rollout status deployment/$dep -n $NAMESPACE
