@@ -97,8 +97,9 @@ jobs:
 
           else
             echo "Deployment $dep doesn't exists, creating it...."
-            kubectl apply -f k8s/deployment.yaml -n $NAMESPACE
-            kubectl apply -f k8s/service/yaml -n $NAMESPACE
+            ls -l 
+            kubectl apply -f ./k8s/deployment.yaml -n $NAMESPACE
+            kubectl apply -f ./k8s/service/yaml -n $NAMESPACE
           fi
              
 
