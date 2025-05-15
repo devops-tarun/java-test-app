@@ -101,7 +101,7 @@ jobs:
 
           else
             echo "Deployment $dep doesn't exists, creating it...."
-            envsubst < ./k8s/deployment.yaml | kubectl apply -n $NAMESPACE -f 
+            envsubst < ./k8s/deployment.yaml | kubectl apply -n $NAMESPACE -f -
             kubectl apply -f ./k8s/service.yaml -n $NAMESPACE
           fi
 
