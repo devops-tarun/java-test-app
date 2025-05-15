@@ -77,6 +77,10 @@ jobs:
           aws eks --region ${{ env.AWS_REGION }} update-kubeconfig --name ${{ env.EKS_CLUSTER_NAME }}
 
       - name: Deploy to EKS using kubectl
+        env:
+          ECR_REGISTRY: ${{ env.ECR_REGISTRY }}
+          ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
+          IMAGE_TAG: ${{ env.IMAGE_TAG }}
         run: |
           NAMESPACE=java-app
           dep=java-app
@@ -97,12 +101,7 @@ jobs:
 
           else
             echo "Deployment $dep doesn't exists, creating it...."
-            kubectl apply -f ./k8s/deployment.yaml -n $NAMESPACE
+            envsubst < ./k8s/deployment.yaml | kubectl apply -n $NAMESPACE -f 
             kubectl apply -f ./k8s/service.yaml -n $NAMESPACE
           fi
-        env: 
-          ECR_REGISTRY: ${{ env.ECR_REGISTRY }}
-          ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
-          IMAGE_TAG: ${{ env.IMAGE_TAG }}
-     
 
