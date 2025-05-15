@@ -101,5 +101,10 @@ jobs:
             kubectl apply -f ./k8s/deployment.yaml -n $NAMESPACE
             kubectl apply -f ./k8s/service.yaml -n $NAMESPACE
           fi
-             
+        env: 
+          env:
+            ECR_REGISTRY: ${{ env.ECR_REGISTRY }}
+            ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
+            IMAGE_TAG: ${{ env.IMAGE_TAG }}
+     
 
